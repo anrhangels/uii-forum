@@ -1,0 +1,21 @@
+<!-- DEFINE $UII_LOGIN_PAGE = true -->
+<!-- INCLUDE overall_header.html -->
+<section class="uii-login-card" aria-labelledby="uii-login-title">
+<svg class="uii-login-art" viewBox="0 0 250 140" width="200" height="112" aria-hidden="true" focusable="false"><use href="#art-admin"></use></svg>
+<h1 id="uii-login-title"><!-- IF S_ADMIN_AUTH -->Подтвердите вход<!-- ELSE -->Вход в УИИ<!-- ENDIF --></h1>
+<!-- IF LOGIN_EXPLAIN --><p class="field-hint">{LOGIN_EXPLAIN}</p><!-- ENDIF -->
+<form action="<!-- IF U_UII_REAUTH -->{U_UII_REAUTH}<!-- ELSE -->{S_LOGIN_ACTION}<!-- ENDIF -->" method="post" id="login" data-focus="<!-- IF S_ADMIN_AUTH -->{PASSWORD_CREDENTIAL}<!-- ELSE -->{USERNAME_CREDENTIAL}<!-- ENDIF -->">
+<!-- IF LOGIN_ERROR --><div class="errorbox" role="alert">{LOGIN_ERROR}</div><!-- ENDIF -->
+<fieldset>
+<label class="portal-field" for="{USERNAME_CREDENTIAL}">{L_USERNAME}<input type="text" name="{USERNAME_CREDENTIAL}" id="{USERNAME_CREDENTIAL}" value="{USERNAME}" class="inputbox" autocomplete="username" placeholder="Name_Surname" required></label>
+<label class="portal-field" for="{PASSWORD_CREDENTIAL}">{L_PASSWORD}<input type="password" id="{PASSWORD_CREDENTIAL}" name="{PASSWORD_CREDENTIAL}" class="inputbox" autocomplete="current-password" required></label>
+<!-- IF CAPTCHA_TEMPLATE and S_CONFIRM_CODE --><!-- DEFINE $CAPTCHA_TAB_INDEX = 3 --><!-- INCLUDE {CAPTCHA_TEMPLATE} --><!-- ENDIF -->
+<!-- IF S_DISPLAY_FULL_LOGIN and S_AUTOLOGIN_ENABLED --><label class="uii-login-remember" for="autologin"><input type="checkbox" name="autologin" id="autologin"> {L_LOG_ME_IN}</label><!-- ENDIF -->
+{S_LOGIN_REDIRECT}{S_FORM_TOKEN_LOGIN}{S_HIDDEN_FIELDS}
+<input type="submit" name="login" value="{L_LOGIN}" class="button1 uii-login-submit">
+<!-- IF S_DISPLAY_FULL_LOGIN and (U_SEND_PASSWORD or U_RESEND_ACTIVATION) --><div class="uii-login-links"><!-- IF U_SEND_PASSWORD --><a href="{U_SEND_PASSWORD}">{L_FORGOT_PASS}</a><!-- ENDIF --><!-- IF U_RESEND_ACTIVATION --><a href="{U_RESEND_ACTIVATION}">{L_RESEND_ACTIVATION}</a><!-- ENDIF --></div><!-- ENDIF -->
+</fieldset>
+<!-- IF not S_ADMIN_AUTH and PROVIDER_TEMPLATE_FILE --><!-- INCLUDE {PROVIDER_TEMPLATE_FILE} --><!-- ENDIF -->
+</form>
+</section>
+<!-- INCLUDE overall_footer.html -->

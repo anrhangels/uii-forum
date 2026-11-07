@@ -1,0 +1,13 @@
+<!-- INCLUDE overall_header.html -->
+<section class="workspace-heading section-heading-art"><div><span class="portal-eyebrow"><!-- IF U_UII_CASE -->Дело №{UII_CASE_NUMBER}<!-- ELSE -->Форум отдела<!-- ENDIF --></span><h2><!-- IF U_UII_CASE -->Обсуждение дела<!-- ELSE -->{TOPIC_TITLE}<!-- ENDIF --></h2><p><!-- IF UII_CASE_CLOSED -->Дело завершено, обсуждение доступно для чтения.<!-- ELSE -->Комментарии и уточнения по делу.<!-- ENDIF --></p></div><svg class="portal-art" viewBox="0 0 250 140" width="250" height="140" aria-hidden="true" focusable="false"><use href="#art-team"></use></svg></section>
+<div class="case-actions"><!-- IF U_UII_CASE --><a class="button" href="{U_UII_CASE}">Открыть карточку дела</a><!-- ENDIF --><!-- IF S_DISPLAY_REPLY_INFO and not S_IS_LOCKED and not UII_CASE_CLOSED --><a class="button button-primary" href="{U_POST_REPLY_TOPIC}">Написать комментарий</a><!-- ENDIF --></div>
+<!-- BEGIN postrow -->
+<!-- IF not postrow.S_POST_HIDDEN -->
+<article id="p{postrow.POST_ID}" class="portal-card discussion-message postprofile-free"><div class="person-inline"><span class="discussion-avatar">{postrow.POSTER_AVATAR}</span><div><strong>{postrow.POST_AUTHOR_FULL}</strong><small>{postrow.POST_DATE}</small></div><!-- IF postrow.U_EDIT --><a class="discussion-edit" href="{postrow.U_EDIT}"><!-- IF U_UII_CASE and postrow.S_FIRST_POST -->Редактировать дело<!-- ELSE -->Изменить<!-- ENDIF --></a><!-- ENDIF --></div>
+<!-- IF U_UII_CASE and postrow.S_FIRST_POST --><p>Здесь обсуждаются материалы дела. Протокол, доказательства и решение находятся в <a href="{U_UII_CASE}">карточке дела</a>.</p><!-- ELSE --><div class="content">{postrow.MESSAGE}</div><!-- ENDIF -->
+<!-- IF postrow.S_HAS_ATTACHMENTS --><div class="discussion-attachments"><!-- BEGIN attachment --><div>{postrow.attachment.DISPLAY_ATTACHMENT}</div><!-- END attachment --></div><!-- ENDIF -->
+</article>
+<!-- ENDIF -->
+<!-- END postrow -->
+<!-- IF .pagination --><nav class="discussion-pagination" aria-label="Страницы обсуждения"><!-- INCLUDE pagination.html --></nav><!-- ENDIF -->
+<!-- INCLUDE overall_footer.html -->

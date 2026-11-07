@@ -1,0 +1,8 @@
+<!-- INCLUDE overall_header.html -->
+<section class="workspace-heading section-heading-art"><div><span class="portal-eyebrow">УИИ / Оформление</span><h2>{{ FORM_TITLE }}</h2></div><svg class="portal-art" viewBox="0 0 250 140" width="250" height="140" aria-hidden="true" focusable="false"><use href="#art-form"></use></svg></section>
+<!-- IF ERROR --><div class="errorbox" role="alert">{{ ERROR }}<p>После ошибки выберите новые изображения повторно. Ранее сохранённые файлы остаются в деле.</p></div><!-- ENDIF -->
+<form id="uii-case-form" action="{FORM_ACTION}" method="post" enctype="multipart/form-data" class="portal-card" data-case-form>
+<input type="hidden" name="save" value="1"><input type="hidden" name="version" value="{VERSION}">
+<!-- IF IS_NEW --><input type="hidden" name="creation_key" value="{CREATION_KEY}"><!-- ENDIF -->
+<label class="portal-field">Название дела<input class="inputbox" name="title" value="{CASE_TITLE}" maxlength="200" required aria-describedby="case-title-help"><small class="field-hint" id="case-title-help">Краткое название от 1 до 200 символов.</small></label>
+<p class="case-responsible"><span class="field-hint">Ответственный сотрудник — автор дела</span><strong>{{ RESPONSIBLE_NAME }}</strong></p>

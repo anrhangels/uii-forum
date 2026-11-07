@@ -1,0 +1,15 @@
+<!-- INCLUDE overall_header.html -->
+<section class="workspace-heading section-heading-art"><div><span class="portal-eyebrow"><!-- IF U_UII_CASE -->Обсуждение дела №{UII_CASE_NUMBER}<!-- ELSE -->Сообщение<!-- ENDIF --></span><h2><!-- IF S_EDIT_POST -->Редактирование сообщения<!-- ELSE -->Написать сообщение<!-- ENDIF --></h2><p>Материалы и решение по делу изменяются в его карточке.</p></div><svg class="portal-art" viewBox="0 0 250 140" width="250" height="140" aria-hidden="true" focusable="false"><use href="#art-form"></use></svg></section>
+<!-- IF U_UII_CASE --><p><a href="{U_UII_CASE}">← К карточке дела</a></p><!-- ENDIF -->
+<!-- IF ERROR --><div class="errorbox" role="alert">{ERROR}</div><!-- ENDIF -->
+<!-- IF S_DISPLAY_PREVIEW --><section class="portal-card"><h3>Предпросмотр сообщения</h3><div class="content">{PREVIEW_MESSAGE}</div></section><!-- ENDIF -->
+<!-- IF S_POST_REVIEW --><section class="portal-card"><h3>Появились новые сообщения</h3><p>Проверьте обсуждение перед отправкой.</p><!-- BEGIN post_review_row --><!-- IF not post_review_row.S_IGNORE_POST --><article><p><strong>{post_review_row.POST_AUTHOR_FULL}</strong> · {post_review_row.POST_DATE}</p><div class="content">{post_review_row.MESSAGE}</div></article><!-- ENDIF --><!-- END post_review_row --></section><!-- ENDIF -->
+<form id="postform" method="post" action="{S_POST_ACTION}" class="portal-card">
+<label class="portal-field" for="subject">Тема<input id="subject" class="inputbox" name="subject" value="{SUBJECT}" maxlength="124" required></label>
+<label class="portal-field" for="message">Текст сообщения<textarea class="inputbox" id="message" name="message" rows="8" required>{MESSAGE}</textarea></label>
+<input type="hidden" name="disable_bbcode" value="1"><input type="hidden" name="disable_smilies" value="1">
+<!-- IF S_EDIT_POST --><label class="portal-field">Причина изменения (необязательно)<input class="inputbox" name="edit_reason" value="{EDIT_REASON}" maxlength="255"></label><!-- ENDIF -->
+{S_HIDDEN_FIELDS}{S_FORM_TOKEN}
+<div class="case-actions"><button type="submit" class="button button-primary" name="post" value="1">Отправить</button><button type="submit" class="button" name="preview" value="1">Предпросмотр</button><!-- IF U_VIEW_TOPIC --><a class="button" href="{U_VIEW_TOPIC}">Отмена</a><!-- ENDIF --></div>
+</form>
+<!-- INCLUDE overall_footer.html -->

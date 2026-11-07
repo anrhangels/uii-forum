@@ -1,0 +1,15 @@
+<!-- INCLUDE @uii_portal/form_start.html -->
+<div class="workspace-form-grid case-form-grid">
+{% include '@uii_portal/field_control.html' with {field: FORM_FIELDS.inspection_type, wide: false} %}
+{% include '@uii_portal/field_control.html' with {field: FORM_FIELDS.planned_at, wide: false} %}
+{% include '@uii_portal/field_control.html' with {field: FORM_FIELDS.description, wide: true} %}
+{% include '@uii_portal/field_control.html' with {field: FORM_FIELDS.comment, wide: true} %}
+</div>
+<section class="case-form-section"><h3>Изображения проверки</h3><div class="case-upload-grid">
+{% include '@uii_portal/file_field.html' with {field: UPLOAD_FIELDS.start_url} %}
+{% include '@uii_portal/file_field.html' with {field: UPLOAD_FIELDS.document_url} %}
+{% include '@uii_portal/file_field.html' with {field: UPLOAD_FIELDS.end_url} %}
+</div></section>
+<!-- IF not IS_NEW --><section class="case-form-section"><h3>Результат проверки</h3>{% include '@uii_portal/field_control.html' with {field: FORM_FIELDS.decision, wide: false} %}{% include '@uii_portal/field_control.html' with {field: FORM_FIELDS.violations, wide: false} %}</section><!-- ENDIF -->
+<div class="case-actions"><!-- IF IS_NEW --><button class="button button-primary" type="submit" name="action" value="register">Зарегистрировать проверку</button><!-- ELSE --><button class="button button-primary" type="submit" name="action" value="save">Сохранить материалы</button><!-- IF HAS_STARTED --><button class="button" type="submit" name="action" value="close">Завершить проверку</button><!-- ELSE --><button class="button" type="submit" name="action" value="start">Начать проверку</button><!-- ENDIF --><button class="button" type="submit" name="action" value="cancel">Отменить проверку</button><!-- ENDIF --></div>
+<!-- INCLUDE @uii_portal/form_end.html -->

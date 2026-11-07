@@ -1,0 +1,18 @@
+<!-- INCLUDE @uii_portal/form_start.html -->
+<div class="workspace-form-grid case-form-grid">
+{% include '@uii_portal/field_control.html' with {field: FORM_FIELDS.subject, wide: true} %}
+{% include '@uii_portal/field_control.html' with {field: FORM_FIELDS.description, wide: true} %}
+{% include '@uii_portal/field_control.html' with {field: FORM_FIELDS.comment, wide: true} %}
+</div>
+<section class="case-form-section"><h3>Материалы запроса</h3><p class="field-hint">Для начала срока нужны скриншот запроса и доказательство уведомления. Их можно прикрепить сейчас или при редактировании.</p><div class="case-upload-grid">
+{% include '@uii_portal/file_field.html' with {field: UPLOAD_FIELDS.document_url} %}
+{% include '@uii_portal/file_field.html' with {field: UPLOAD_FIELDS.notification_url} %}
+</div></section>
+<!-- IF not IS_NEW and HAS_STARTED -->
+<section class="case-form-section"><h3>Завершение запроса</h3>{% include '@uii_portal/field_control.html' with {field: FORM_FIELDS.answer_url, wide: false} %}
+<!-- IF IS_MANAGER -->{% include '@uii_portal/field_control.html' with {field: FORM_FIELDS.completion_note, wide: false} %}<!-- ENDIF -->
+</section><!-- ENDIF -->
+<div class="case-actions"><button class="button button-primary" type="submit" name="action" value="save"><!-- IF IS_NEW -->Создать служебный запрос<!-- ELSE -->Сохранить материалы<!-- ENDIF --></button>
+<!-- IF not IS_NEW --><!-- IF HAS_STARTED --><button class="button" type="submit" name="action" value="close">Завершить запрос</button><!-- ELSE --><button class="button" type="submit" name="action" value="notify">Подтвердить начало срока 48 часов</button><!-- ENDIF --><!-- ENDIF -->
+</div>
+<!-- INCLUDE @uii_portal/form_end.html -->

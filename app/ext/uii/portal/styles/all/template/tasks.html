@@ -1,0 +1,10 @@
+<!-- INCLUDE overall_header.html -->
+<section class="workspace-heading section-heading-art"><div><span class="portal-eyebrow">УИИ / Рабочее пространство</span><h2>{{ TASK_TITLE }}</h2><p>{{ TASK_SCOPE }}</p></div><svg class="portal-art" viewBox="0 0 250 140" width="250" height="140" aria-hidden="true" focusable="false"><use href="#art-tasks"></use></svg></section>
+<nav aria-label="Фильтры задач"><!-- BEGIN filters --><a class="button" href="{filters.URL}"<!-- IF filters.SELECTED --> aria-current="page"<!-- ENDIF -->>{{ filters.LABEL }}</a> <!-- END filters --></nav>
+<!-- BEGIN tasks -->
+<article class="portal-card"><span class="portal-tag">Дело №{tasks.NUMBER}</span><h3><a href="{tasks.URL}">{{ tasks.TITLE }}</a></h3><p>{{ tasks.ACTION }}</p><p><!-- IF tasks.SHOW_STATUS --><span class="portal-tag portal-{tasks.TONE}">{{ tasks.STATUS }}</span><!-- ENDIF --></p><div class="person-inline"><img class="fixed-avatar" src="{tasks.AUTHOR_AVATAR}" alt="" width="32" height="32"><small>Автор: {{ tasks.AUTHOR_NAME }} · Ответственный: {{ tasks.ASSIGNED_NAME }}</small></div><!-- IF tasks.OVERDUE --><strong>Срок истёк</strong><!-- ENDIF --></article>
+<!-- BEGINELSE -->
+<div class="portal-card"><h3>Задачи не найдены</h3><p>Здесь появятся задачи из назначенных вам дел.</p></div>
+<!-- END tasks -->
+<!-- IF PREVIOUS_URL or NEXT_URL --><nav aria-label="Страницы"><!-- IF PREVIOUS_URL --><a class="button" href="{PREVIOUS_URL}">Назад</a><!-- ENDIF --><!-- IF NEXT_URL --><a class="button" href="{NEXT_URL}">Следующие задачи</a><!-- ENDIF --></nav><!-- ENDIF -->
+<!-- INCLUDE overall_footer.html -->

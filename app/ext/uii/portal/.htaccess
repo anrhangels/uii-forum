@@ -1,0 +1,4 @@
+# PHP-классы расширения выполняются только через маршрутизатор phpBB.
+<FilesMatch "\.php$">
+    Require all denied
+</FilesMatch>

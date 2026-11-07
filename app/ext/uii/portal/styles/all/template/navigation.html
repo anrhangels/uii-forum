@@ -1,0 +1,11 @@
+<!-- INCLUDE overall_header.html -->
+<section class="workspace-heading section-heading-art"><div><span class="portal-eyebrow">Управление форумом</span><h2>Левое меню</h2><p>Создавайте группы, меняйте порядок и переносите пункты. Изменения применятся после сохранения.</p></div><svg class="portal-art" viewBox="0 0 250 140" width="250" height="140" aria-hidden="true" focusable="false"><use href="#art-settings"></use></svg></section>
+<!-- IF NAV_ERROR --><div class="errorbox" role="alert">{{ NAV_ERROR }}</div><!-- ENDIF --><!-- IF NAV_SUCCESS --><p class="workspace-toast" role="status">{{ NAV_SUCCESS }}</p><!-- ENDIF -->
+<form method="post" id="navigation-form"><input type="hidden" name="version" value="{NAV_VERSION}"><input type="hidden" name="layout" id="navigation-layout" value="{NAV_LAYOUT}"><input type="hidden" id="navigation-defaults" value="{NAV_DEFAULTS}" disabled>
+<div id="navigation-catalog" hidden><!-- BEGIN nav_catalog --><span data-id="{nav_catalog.ID}" data-label="{nav_catalog.LABEL}" data-level="{nav_catalog.LEVEL}"></span><!-- END nav_catalog --></div>
+<div class="portal-card"><h3>Группы и ссылки</h3><p class="field-hint">До 8 групп. Перетаскивайте пункты или используйте стрелки и выбор группы. Пустые группы не показываются сотрудникам. Названия ссылок и права закреплены за функциями портала.</p><div class="case-actions"><button type="button" class="button" id="navigation-add">Добавить группу</button><button type="button" class="button" id="navigation-reset">Стандартное меню</button></div><p id="navigation-status" class="field-hint" aria-live="polite"></p></div>
+<div id="navigation-editor"></div><noscript><p class="errorbox">Для редактора меню включите JavaScript.</p></noscript>
+{S_FORM_TOKEN}<div class="case-actions"><button class="button button-primary" id="navigation-save" type="submit" name="save_navigation" value="1" disabled>Сохранить меню</button><a class="button" href="{U_UII_ADMIN}">К управлению</a></div>
+</form>
+<script src="{T_THEME_PATH}/navigation.js?v=1.3.0" defer></script>
+<!-- INCLUDE overall_footer.html -->

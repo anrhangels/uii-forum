@@ -1,0 +1,10 @@
+<label class="portal-field{% if wide %} field-wide{% endif %}" for="case-{{ field.NAME }}">{{ field.LABEL }}
+{% if field.TYPE == 'textarea' %}
+<textarea class="inputbox" id="case-{{ field.NAME }}" name="{{ field.NAME }}" rows="4" maxlength="20000"{% if field.REQUIRED %} required{% endif %}{% if field.HINT %} aria-describedby="case-{{ field.NAME }}-help"{% endif %}>{{ field.VALUE }}</textarea>
+{% elseif field.TYPE == 'choice' %}
+<select id="case-{{ field.NAME }}" name="{{ field.NAME }}"{% if field.REQUIRED %} required{% endif %}>{% for value, label in field.CHOICES %}<option value="{{ value }}"{% if field.VALUE == value %} selected{% endif %}>{{ label }}</option>{% endfor %}</select>
+{% else %}
+<input class="inputbox" id="case-{{ field.NAME }}" name="{{ field.NAME }}" type="{{ field.TYPE }}" value="{{ field.VALUE }}" maxlength="20000"{% if field.REQUIRED %} required{% endif %}{% if field.HINT %} aria-describedby="case-{{ field.NAME }}-help"{% endif %}>
+{% endif %}
+{% if field.HINT %}<small class="field-hint" id="case-{{ field.NAME }}-help">{{ field.HINT }}</small>{% endif %}
+</label>

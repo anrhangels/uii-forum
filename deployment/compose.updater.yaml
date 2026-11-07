@@ -1,0 +1,5 @@
+# Optional Docker bootstrap: preserve the base compose.yaml (including its port binding).
+services:
+  web:
+    volumes:
+      - ./uii-private:/var/www/uii-private

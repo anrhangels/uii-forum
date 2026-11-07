@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="{S_CONTENT_DIRECTION}" lang="{S_USER_LANG}">
+<head>
+<meta charset="utf-8" />
+<script src="{T_THEME_PATH}/theme-init.js?v=1.3.0"></script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+{META}
+<title><!-- IF not S_VIEWTOPIC and not S_VIEWFORUM -->{SITENAME} - <!-- ENDIF --><!-- IF S_IN_MCP -->{L_MCP} - <!-- ELSEIF S_IN_UCP -->{L_UCP} - <!-- ENDIF -->{PAGE_TITLE}<!-- IF S_VIEWTOPIC or S_VIEWFORUM --> - {SITENAME}<!-- ENDIF --></title>
+
+
+<!-- IF U_CANONICAL -->
+	<link rel="canonical" href="{U_CANONICAL}">
+<!-- ENDIF -->
+
+<!--
+	phpBB style name: prosilver
+	Based on style:   prosilver (this is the default phpBB3 style)
+	Original author:  Tom Beddard ( http://www.subBlue.com/ )
+	Modified by:
+-->
+
+
+<link href="{T_FONT_AWESOME_LINK}" rel="stylesheet">
+<link href="{T_STYLESHEET_LINK}" rel="stylesheet">
+<link href="{T_STYLESHEET_LANG_LINK}" rel="stylesheet">
+
+<!-- IF S_CONTENT_DIRECTION eq 'rtl' -->
+	<link href="{T_THEME_PATH}/bidi.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet">
+<!-- ENDIF -->
+
+<!-- IF S_PLUPLOAD -->
+	<link href="{T_THEME_PATH}/plupload.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet">
+<!-- ENDIF -->
+
+
+
+
+
+<!-- EVENT overall_header_head_append -->
+
+{$STYLESHEETS}
+
+<!-- EVENT overall_header_stylesheets_after -->
+
+<link href="{T_THEME_PATH}/portal.css?v=1.3.0" rel="stylesheet">
+<script src="{T_THEME_PATH}/portal.js?v=1.3.0" defer></script>
+</head>
+<body id="phpbb" class="nojs notouch section-{SCRIPT_NAME} {S_CONTENT_DIRECTION} {BODY_CLASS}<!-- IF $UII_LOGIN_PAGE --> uii-login-page<!-- ENDIF -->">
+
+<!-- EVENT overall_header_body_before -->
+<!-- INCLUDE @uii_portal/visuals.html -->
+
+<!-- IF not $UII_LOGIN_PAGE --><aside class="uii-sidebar" aria-label="Навигация портала">
+
+<button type="button" id="uii-menu" aria-expanded="false" aria-controls="uii-navigation">Меню</button>
+<nav id="uii-navigation" aria-label="Разделы портала">
+<!-- IF S_USER_LOGGED_IN -->
+<!-- BEGIN nav_groups --><details class="nav-section" open><summary>{{ nav_groups.TITLE }}</summary><!-- BEGIN items --><a href="{nav_groups.items.URL}"><svg class="portal-icon" aria-hidden="true" focusable="false"><use href="#icon-{nav_groups.items.ICON}"></use></svg><span>{{ nav_groups.items.LABEL }}</span></a><!-- END items --></details><!-- END nav_groups -->
+<!-- ELSE --><p>Закрытый портал Amazing RP</p><!-- ENDIF -->
+</nav><button type="button" id="uii-theme" aria-pressed="false"><svg class="portal-icon" aria-hidden="true" focusable="false"><use href="#icon-moon"></use></svg><span>Тёмная тема</span></button></aside><!-- ELSE --><button type="button" id="uii-theme" class="uii-login-theme" aria-pressed="false"><svg class="portal-icon" aria-hidden="true"><use href="#icon-moon"></use></svg><span>Тёмная тема</span></button><!-- ENDIF -->
+<div id="wrap" class="wrap">
+	<a id="top" class="top-anchor" accesskey="t"></a>
+	<div id="page-header">
+<div class="workspace-topbar"><!-- IF S_USER_LOGGED_IN --><a href="{U_UII_ALL_CASES}" class="topbar-search">Поиск по делам <svg class="portal-icon" aria-hidden="true" focusable="false"><use href="#icon-search"></use></svg></a><details class="profile-menu"><summary><img src="{UII_AVATAR}" alt="" width="34" height="34"><span>{{ UII_USERNAME }}</span><span aria-hidden="true">⌄</span></summary><div class="profile-menu-panel"><a href="{U_UII_ACCOUNT}">Мой профиль</a><a href="{U_UII_SETTINGS}">Настройки</a><!-- IF S_UII_MANAGE --><a href="{U_UII_ADMIN}">Управление</a><!-- ENDIF --><a href="{U_LOGIN_LOGOUT}">Выйти</a></div></details><!-- ENDIF --></div>
+	</div>
+
+	<!-- EVENT overall_header_page_body_before -->
+
+	<a id="start_here" class="anchor"></a>
+	<div id="page-body" class="page-body" role="main">
+		<!-- IF S_BOARD_DISABLED and S_USER_LOGGED_IN and (U_MCP or U_ACP) -->
+		<div id="information" class="rules">
+			<div class="inner">
+				<strong>{L_INFORMATION}{L_COLON}</strong> {L_BOARD_DISABLED}
+			</div>
+		</div>
+		<!-- ENDIF -->
+
+		<!-- EVENT overall_header_content_before -->

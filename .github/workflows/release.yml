@@ -1,0 +1,33 @@
+name: Выпуск обновления УИИ
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Собрать и проверить пакет
+        env:
+          UII_REPOSITORY: ${{ github.repository }}
+          UII_RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          python3 scripts/package-web-update.py --repository "$UII_REPOSITORY" --expected-version "$UII_RELEASE_TAG" --output release/web-update
+          python3 tests/web_release.py release/web-update/uii-web-update.zip
+      - name: Опубликовать Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+          UII_RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          gh release create "$UII_RELEASE_TAG" release/web-update/uii-web-update.zip release/web-update/uii-web-update.sha256 --verify-tag --generate-notes --title "УИИ $UII_RELEASE_TAG"

@@ -1,0 +1,5 @@
+<!-- DEFINE $UII_LOGIN_PAGE = true -->
+<!-- INCLUDE overall_header.html -->
+<section class="uii-login-card uii-error-card" aria-labelledby="not-found-title"><svg class="uii-login-art" viewBox="0 0 250 140" width="200" height="112" aria-hidden="true"><use href="#art-form"></use></svg><p class="uii-error-code" aria-label="Ошибка 404">404</p><h1 id="not-found-title">Страница не найдена</h1><p>Возможно, в адресе опечатка или эта страница больше не существует.</p><div class="case-actions"><a class="button button-primary" href="{% if ERROR_REGISTERED %}{{ ERROR_HOME|e }}{% else %}{{ ERROR_LOGIN|e }}{% endif %}">{% if ERROR_REGISTERED %}На главную{% else %}Войти в УИИ{% endif %}</a><button class="button" type="button" data-error-back hidden>Назад</button></div></section>
+<script src="{T_THEME_PATH}/error-page.js?v=1.3.0" defer></script>
+<!-- INCLUDE overall_footer.html -->

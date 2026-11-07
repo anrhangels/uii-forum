@@ -1,0 +1,18 @@
+<!-- INCLUDE @uii_portal/form_start.html -->
+<div class="workspace-form-grid case-form-grid">
+{% include '@uii_portal/field_control.html' with {field: FORM_FIELDS.applicant, wide: false} %}
+{% include '@uii_portal/field_control.html' with {field: FORM_FIELDS.subject, wide: false} %}
+{% include '@uii_portal/field_control.html' with {field: FORM_FIELDS.description, wide: true} %}
+{% include '@uii_portal/field_control.html' with {field: FORM_FIELDS.comment, wide: true} %}
+</div>
+<section class="case-form-section"><h3>Доказательства жалобы</h3>
+{% include '@uii_portal/file_field.html' with {field: UPLOAD_FIELDS.document_url} %}
+</section>
+<!-- IF not IS_NEW --><section class="case-form-section"><h3>Завершение жалобы</h3>
+{% include '@uii_portal/file_field.html' with {field: UPLOAD_FIELDS.protocol} %}
+{% include '@uii_portal/field_control.html' with {field: FORM_FIELDS.decision, wide: false} %}
+{% include '@uii_portal/field_control.html' with {field: FORM_FIELDS.violations, wide: false} %}
+{% include '@uii_portal/field_control.html' with {field: FORM_FIELDS.punishment, wide: false} %}
+</section><!-- ENDIF -->
+<div class="case-actions"><button class="button button-primary" type="submit" name="action" value="save"><!-- IF IS_NEW -->Создать жалобу<!-- ELSE -->Сохранить материалы<!-- ENDIF --></button><!-- IF not IS_NEW and CAN_CLOSE_CASE --><button class="button" type="submit" name="action" value="close">Завершить жалобу</button><!-- ENDIF --></div>
+<!-- INCLUDE @uii_portal/form_end.html -->

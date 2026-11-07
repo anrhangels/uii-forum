@@ -1,0 +1,70 @@
+uii_portal_tasks:
+    path: /uii/tasks
+    defaults: { _controller: uii.portal.controller:tasks }
+uii_portal_cases:
+    path: /uii/cases
+    defaults: { _controller: uii.portal.controller:cases }
+uii_portal_case:
+    path: /uii/cases/{id}
+    defaults: { _controller: uii.portal.controller:detail }
+    requirements: { id: "[0-9]+" }
+uii_portal_photos:
+    path: /uii/photos/{id}
+    defaults: { _controller: uii.portal.controller:photos }
+    requirements: { id: "[0-9]+" }
+uii_portal_create:
+    path: /uii/new
+    defaults: { _controller: uii.portal.controller:form }
+uii_portal_edit:
+    path: /uii/edit/{id}
+    defaults: { _controller: uii.portal.controller:form }
+    requirements: { id: "[0-9]+" }
+uii_portal_employees:
+    path: /uii/employees
+    defaults: { _controller: uii.portal.controller:employees }
+uii_portal_password:
+    path: /uii/password
+    defaults: { _controller: uii.portal.controller:password }
+uii_portal_settings:
+    path: /uii/settings
+    defaults: { _controller: uii.portal.controller:settings }
+uii_portal_activity:
+    path: /uii/activity
+    defaults: { _controller: uii.portal.controller:activity }
+uii_portal_profile:
+    path: /uii/employees/{id}
+    defaults: { _controller: uii.portal.controller:profile }
+    requirements: { id: "[0-9]+" }
+uii_portal_admin:
+    path: /uii/admin
+    defaults: { _controller: uii.portal.controller:admin }
+uii_portal_navigation:
+    path: /uii/navigation
+    defaults: { _controller: uii.portal.controller:navigation }
+uii_portal_account:
+    path: /uii/account
+    defaults: { _controller: uii.portal.controller:account }
+uii_portal_bug_create:
+    path: /uii/bugs/new
+    defaults: { _controller: uii.portal.bugs:create }
+uii_portal_bug_success:
+    path: /uii/bugs/sent/{id}
+    defaults: { _controller: uii.portal.bugs:success }
+    requirements: { id: "[0-9]+" }
+uii_portal_bug_admin:
+    path: /uii/admin/bugs
+    defaults: { _controller: uii.portal.bugs:listing }
+uii_portal_bug_detail:
+    path: /uii/admin/bugs/{id}
+    defaults: { _controller: uii.portal.bugs:detail }
+    requirements: { id: "[0-9]+" }
+uii_portal_photo_viewer:
+    path: /uii/images/{id}
+    defaults: { _controller: uii.portal.controller:photoViewer }
+    requirements: { id: "[0-9]+" }
+uii_portal_not_found:
+    path: /uii/not-found
+    defaults: { _controller: uii.portal.errors:missing }
+uii_portal_updates:
+    path: /uii/admin/updates
+    defaults: { _controller: uii.portal.updates:index }

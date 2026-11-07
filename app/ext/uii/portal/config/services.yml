@@ -1,0 +1,57 @@
+services:
+    uii.portal.listener:
+        class: uii\portal\event\listener
+        arguments:
+            - '@user'
+            - '@request'
+            - '@template'
+            - '@controller.helper'
+        tags:
+            - { name: event.listener }
+    uii.portal.controller:
+        class: uii\portal\controller\dashboard
+        arguments:
+            - '@controller.helper'
+            - '@template'
+            - '@user'
+            - '@auth'
+            - '@dbal.conn'
+            - '%core.table_prefix%'
+            - '@request'
+    uii.portal.bugs:
+        class: uii\portal\controller\bugs
+        arguments:
+            - '@controller.helper'
+            - '@template'
+            - '@user'
+            - '@auth'
+            - '@dbal.conn'
+            - '%core.table_prefix%'
+            - '@request'
+            - '@config'
+    uii.portal.errors:
+        class: uii\portal\controller\errors
+        arguments:
+            - '@controller.helper'
+            - '@template'
+            - '@user'
+    uii.portal.error_listener:
+        class: uii\portal\event\errors
+        arguments:
+            - '@uii.portal.errors'
+        tags:
+            - { name: kernel.event_subscriber }
+    uii.portal.updates:
+        class: uii\portal\controller\updates
+        arguments:
+            - '@controller.helper'
+            - '@template'
+            - '@user'
+            - '@auth'
+            - '@request'
+            - '@dbal.conn'
+            - '%core.table_prefix%'
+            - '@config'
+            - '@cache'
+            - '@service_container'
+            - '%core.root_path%'

@@ -1,0 +1,23 @@
+<?php
+// Заполните реквизитами НОВОЙ базы из панели SpaceWeb. Локальные пароли сюда не копируются.
+// MySQL 5.7: dbhost=localhost, dbport=''. MySQL 8: dbhost=127.0.0.1, dbport=3308.
+$dbms = 'phpbb\\db\\driver\\mysqli';
+$dbhost = '127.0.0.1';
+$dbport = '3308';
+$dbname = 'SPACEWEB_DB_NAME';
+$dbuser = 'SPACEWEB_DB_USER';
+$dbpasswd = 'SPACEWEB_DB_PASSWORD';
+$table_prefix = '__TABLE_PREFIX__';
+$phpbb_adm_relative_path = 'adm/';
+$acm_type = 'phpbb\\cache\\driver\\file';
+// Папка uii-private должна находиться РЯДОМ с public_html, а не внутри неё.
+define('UII_EVIDENCE_PATH', dirname(__DIR__) . '/uii-private/evidence');
+// Не открывать перенесённую копию до настройки домена, сеансов и тестовых аккаунтов.
+if (PHP_SAPI !== 'cli' && is_file(__DIR__ . '/.uii-deploy.lock')) {
+    http_response_code(503);
+    header('Content-Type: text/plain; charset=utf-8');
+    header('Retry-After: 3600');
+    exit('Портал переносится. Доступ будет открыт после настройки.');
+}
+define('PHPBB_INSTALLED', true);
+define('PHPBB_ENVIRONMENT', 'production');

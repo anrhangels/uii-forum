@@ -1,0 +1,14 @@
+<section class="case-file-field" data-case-file-field>
+<h4>{{ field.LABEL }}</h4>
+{% if field.SAVED_URL %}
+<p><a href="{{ field.SAVED_URL }}" target="_blank" rel="noopener noreferrer">Открыть изображение</a><small class="field-hint">Файл уже сохранён в деле.</small></p>
+{% else %}
+{% if field.LEGACY_URL %}<p><a href="{{ field.LEGACY_URL }}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Открыть ранее сохранённую ссылку</a></p>{% endif %}
+<label class="photo-dropzone" data-case-dropzone for="{{ field.NAME }}"><strong>Выбрать изображение</strong><span>перетащить файл или нажать Ctrl+V</span><input type="file" id="{{ field.NAME }}" name="{{ field.NAME }}" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" aria-describedby="{{ field.NAME }}-help {{ field.NAME }}-error" data-case-file></label>
+<small class="field-hint" id="{{ field.NAME }}-help">JPG, JPEG, PNG или WebP · до 5 МиБ. Нажмите на область выбора и вставьте скриншот через Ctrl+V. Изображения оптимизируются перед сохранением.</small>
+<p class="photo-selection" data-case-file-name aria-live="polite">Файл не выбран</p>
+<p class="photo-error" id="{{ field.NAME }}-error" data-case-file-error role="alert" hidden></p>
+<img class="photo-local-preview" data-case-file-preview alt="Предпросмотр: {{ field.LABEL }}" hidden>
+<button class="button" type="button" data-case-file-remove hidden>Убрать выбранное изображение</button>
+{% endif %}
+</section>
