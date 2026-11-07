@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Переход на форум УИИ — платформу управления делами и задачами.">
+  <title>Переход в УИИ</title>
+  <noscript><meta http-equiv="refresh" content="2;url=http://mevdokimov.temp.swtest.ru/"></noscript>
+  <style>
+    :root{color-scheme:dark;--bg:#000;--surface:#0b0b0d;--text:#e8e8ec;--muted:#acacb5;--line:#29292e;--accent:#9bc2ff;--soft:#1a1b22;--on-accent:#101b2c}
+    @media(prefers-color-scheme:light){:root{color-scheme:light;--bg:#f4f6fa;--surface:#fff;--text:#202d40;--muted:#596b82;--line:#dbe3ef;--accent:#2459ba;--soft:#eaf0fc;--on-accent:#fff}}
+    *{box-sizing:border-box}body{margin:0;min-height:100svh;background:var(--bg);color:var(--text);font:15px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;display:grid;place-items:center;padding:24px}main{width:min(100%,460px)}.identity{display:flex;align-items:center;gap:12px;margin:0 0 24px;padding:0 4px}.identity strong{font-size:20px;letter-spacing:.02em}.identity span{border-left:1px solid var(--line);padding-left:12px;color:var(--muted);font-size:13px}.card{padding:36px;border:1px solid var(--line);border-radius:20px;background:var(--surface)}.symbol{width:52px;height:52px;display:grid;place-items:center;border:1px solid var(--line);border-radius:15px;background:var(--soft);color:var(--accent);margin-bottom:24px}.symbol svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.eyebrow{margin:0 0 7px;color:var(--muted);font-size:12px}h1{font-size:clamp(25px,6vw,30px);line-height:1.2;letter-spacing:-.035em;font-weight:650;margin:0 0 14px}.description{margin:0;color:var(--muted)}.progress{height:3px;background:var(--line);border-radius:3px;overflow:hidden;margin:28px 0}.progress span{display:block;height:100%;background:var(--accent);transform-origin:left;animation:connect 2s linear both}.button,.button:visited{display:flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 18px;background:var(--accent);color:var(--on-accent);border-radius:10px;text-decoration:none;font-weight:600;transition:filter .15s}.button:hover{filter:brightness(.92)}a:focus-visible{outline:3px solid var(--accent);outline-offset:5px}.button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.destination{margin:16px 0 0;text-align:center;color:var(--muted);font-size:12px;overflow-wrap:anywhere}.note{margin:20px 4px 0;color:var(--muted);font-size:12px;text-align:center}noscript p{margin:16px 0 0;color:var(--muted);font-size:13px}@keyframes connect{from{transform:scaleX(0)}to{transform:scaleX(1)}}@media(max-width:480px){body{padding:18px}.card{padding:28px 24px;border-radius:16px}.identity{margin-bottom:18px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.progress span{transform:none}}
+  </style>
+</head>
+<body>
+  <main aria-labelledby="title">
+    <div class="identity"><strong>УИИ</strong><span>Дела и задачи отдела</span></div>
+    <section class="card">
+      <div class="symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 4h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-5M4 12h11m-4-4 4 4-4 4"/></svg></div>
+      <p class="eyebrow">Переход на форум</p>
+      <h1 id="title">Открываем УИИ</h1>
+      <p class="description" id="status" role="status">Через мгновение вы окажетесь на форуме. Если переход не начался, нажмите кнопку ниже.</p>
+      <div class="progress" aria-hidden="true"><span></span></div>
+      <a class="button" id="continue" href="http://mevdokimov.temp.swtest.ru/" rel="noreferrer">Перейти на форум<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      <p class="destination">mevdokimov.temp.swtest.ru</p>
+      <noscript><p>JavaScript отключён. Можно перейти на форум по кнопке выше.</p></noscript>
+    </section>
+    <p class="note">Управление делами и задачами УИИ</p>
+  </main>
+  <script>
+    (() => {
+      const destination = 'http://mevdokimov.temp.swtest.ru/';
+      const timer = window.setTimeout(() => window.location.replace(destination), 2000);
+      document.getElementById('continue').addEventListener('click', () => window.clearTimeout(timer));
+    })();
+  </script>
+</body>
+</html>
